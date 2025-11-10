@@ -18,15 +18,30 @@ const Users = () => {
   }, [endpoint]);
 
   return (
-    <div className="container mt-4">
-      <h2>Users</h2>
-      <ul className="list-group">
-        {users.map((user, idx) => (
-          <li key={idx} className="list-group-item">
-            {user.name} - {user.email} ({user.team?.name || user.team})
-          </li>
-        ))}
-      </ul>
+    <div className="card shadow-sm mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4 text-warning">Users</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover align-middle">
+            <thead className="table-light">
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Team</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user, idx) => (
+                <tr key={idx}>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
+                  <td>{user.team?.name || user.team}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

@@ -18,15 +18,30 @@ const Workouts = () => {
   }, [endpoint]);
 
   return (
-    <div className="container mt-4">
-      <h2>Workouts</h2>
-      <ul className="list-group">
-        {workouts.map((workout, idx) => (
-          <li key={idx} className="list-group-item">
-            {workout.name} - {workout.description}
-          </li>
-        ))}
-      </ul>
+    <div className="card shadow-sm mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4 text-danger">Workouts</h2>
+        <div className="table-responsive">
+          <table className="table table-striped table-hover align-middle">
+            <thead className="table-light">
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Suggested For Team</th>
+              </tr>
+            </thead>
+            <tbody>
+              {workouts.map((workout, idx) => (
+                <tr key={idx}>
+                  <td>{workout.name}</td>
+                  <td>{workout.description}</td>
+                  <td>{workout.suggested_for_team?.name || workout.suggested_for_team}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
